@@ -176,6 +176,7 @@ define(['jquery', 'app'], function($, App) {
     		game.setup('#bubbles', canvas, background, foreground, input);
     		game.setStorage(app.storage);
     		app.setGame(game);
+            window.__atoGame = game;
     		
     		if(app.isDesktop && app.supportsWorkers) {
     		    game.loadMap();
@@ -240,6 +241,21 @@ define(['jquery', 'app'], function($, App) {
     		});
 	
             app.initHealthBar();
+
+            if(window.location.search.indexOf("ato-demo=1") !== -1) {
+                $('body').addClass('ato-demo');
+                app.tryStartingGame("Ato Explorer");
+            }
+
+            $('#ato-demo-action').click(function(event) {
+                event.stopPropagation();
+                if(game && game.started && game.player) {
+                    game.say("Hello from Ato!");
+                    document.body.setAttribute("data-ato-interaction", "chat");
+                    this.disabled = true;
+                    this.textContent = "Hello sent";
+                }
+            });
 	
             $('#nameinput').attr('value', '');
     		$('#chatbox').attr('value', '');

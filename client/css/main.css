@@ -1230,3 +1230,26 @@ footer, header, hgroup, menu, nav, section {
     .opera #achievements.active, .opera #instructions.active { z-index: 30000;}
     .opera #coinsparks {display:none;}
     .opera #death, .opera #about, .opera #credits, .opera #error, .opera #confirmation, .opera #loadcharacter { z-index: -30000; }
+body:not(.ato-demo) #ato-demo-action {
+    display: none;
+}
+
+#ato-demo-action {
+    position: fixed;
+    z-index: 30;
+    top: 12px;
+    right: 12px;
+    padding: 8px 14px;
+    border: 2px solid #f2d792;
+    border-radius: 4px;
+    color: #3b2a16;
+    background: #fff2c7;
+    box-shadow: 0 2px 0 #8a6532;
+    font: bold 14px/1.2 Arial, sans-serif;
+    cursor: pointer;
+}
+
+#ato-demo-action:disabled {
+    opacity: 0.7;
+    cursor: default;
+}

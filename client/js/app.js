@@ -83,7 +83,8 @@ define(['jquery', 'storage'], function($, Storage) {
 
         start: function(username) {
             var self = this,
-                firstTimePlaying = !self.storage.hasAlreadyPlayed();
+                firstTimePlaying = !self.storage.hasAlreadyPlayed() &&
+                    window.location.search.indexOf("ato-demo=1") === -1;
             
             if(username && !this.game.started) {
                 var optionsSet = false,

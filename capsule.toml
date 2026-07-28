@@ -1,0 +1,14 @@
+schema_version = "1"
+name = "browserquest"
+version = "1.0.0"
+
+[run]
+command = ["node", "server/js/main.js", "server/config_local.json"]
+
+[web]
+port = 8080
+bind = "0.0.0.0"
+
+[seal_at]
+command = ["node", "-e", 'const http=require("http");http.get("http://172.16.0.2:8080/ato-state",r=>{let b="";r.on("data",c=>b+=c);r.on("end",()=>{const s=JSON.parse(b);if(s.app!=="browserquest"||s.primary_screen!=="live_game"||!s.websocket)process.exit(1)})}).on("error",()=>process.exit(1))']
+timeout_seconds = 45

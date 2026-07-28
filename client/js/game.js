@@ -774,6 +774,9 @@ function(InfoManager, BubbleManager, Renderer, Map, Animation, Sprite, AnimatedT
                 self.player.name = name;
                 self.player.setGridPosition(x, y);
                 self.player.setMaxHitPoints(hp);
+                document.body.setAttribute("data-ato-player", name);
+                document.body.setAttribute("data-ato-position", x + "," + y);
+                document.body.setAttribute("data-ato-ready", "true");
             
                 self.updateBars();
                 self.resetCamera();
@@ -848,6 +851,7 @@ function(InfoManager, BubbleManager, Renderer, Map, Animation, Sprite, AnimatedT
                 });
             
                 self.player.onStep(function() {
+                    document.body.setAttribute("data-ato-position", self.player.gridX + "," + self.player.gridY);
                     if(self.player.hasNextStep()) {
                         self.registerEntityDualPosition(self.player);
                     }

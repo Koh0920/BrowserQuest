@@ -9,6 +9,10 @@ The original 2012 WebSocket transport was updated to the maintained
 same origin so that Ato's generated HTTPS hostname works without a dispatcher
 or an external service.
 
+The 61 MiB Tiled editor source (`tools/maps/tmx/map.tmx`) is omitted from the
+runtime projection to satisfy Ato v1's per-file limit. BrowserQuest executes
+the upstream-generated client and server JSON maps, which remain unchanged.
+
 ## Ready-state proof
 
 - `GET /ato-state` reports the pinned upstream commit and WebSocket contract.
